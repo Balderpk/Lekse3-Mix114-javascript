@@ -1,10 +1,11 @@
 //assignment 1.a)
+const text = "A\nB\nC\n";
+
 function lineSplit(text) {
   const split_text = text.split("\n");
   return split_text;
 }
-
-lineSplit("A\nB\nC\n");
+document.getElementById("1a").innerHTML = lineSplit(text);
 
 //assignment 1.b)
 string_array1 = ["1.2", "-3.4", "5.6"];
@@ -14,7 +15,7 @@ function strToInt(str_list) {
   return int_list;
 }
 
-strToInt(string_array1);
+document.getElementById("1b").innerHTML = strToInt(string_array1);
 
 //assignment 1.c)
 
@@ -33,3 +34,24 @@ function passSeries(series) {
 }
 
 passSeries(my_list);
+
+//assignment 2)
+
+/*Create an interactive to-do list that has the following functionalities 
+- add to the to-do list an item (based on the user input)
+- remove an item from the to-do list
+- checkbox next to each item with a possibility to check or uncheck the box
+- once the box is checked, an item should be crossed out
+- *add an optional due date to the item from user input
+- *prioritize items according to the due date and present them first
+*/
+
+function add_item(item) {
+  const ul = document.getElementById("to_do");
+  const li = document.createElement("li");
+
+  if (item === "") return;
+
+  li.innerHTML = item;
+  ul.appendChild(li);
+}
