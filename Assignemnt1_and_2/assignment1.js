@@ -37,21 +37,46 @@ passSeries(my_list);
 
 //assignment 2)
 
-/*Create an interactive to-do list that has the following functionalities 
-- add to the to-do list an item (based on the user input)
-- remove an item from the to-do list
-- checkbox next to each item with a possibility to check or uncheck the box
-- once the box is checked, an item should be crossed out
-- *add an optional due date to the item from user input
-- *prioritize items according to the due date and present them first
-*/
+function leggTil () {
 
-function add_item(item) {
-  const ul = document.getElementById("to_do");
-  const li = document.createElement("li");
+    const input = document.getElementById("input");
+    const text = input.value;
 
-  if (item === "") return;
+    if (text === "") return;
 
-  li.innerHTML = item;
-  ul.appendChild(li);
-}
+    const li = document.createElement("li");
+
+    const span = document.createElement("span");
+    span.textContent = text;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+
+// sjekke av tekstboksene - tekst får strek over seg
+    checkbox.onchange = function () {
+        if (checkbox.checked) {
+            span.style.textDecoration = "line-through";
+        }
+        else {
+            span.style.textDecoration = "none" ;
+        }
+    };
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "remove";
+
+    removeBtn.onclick = function () {
+        li.remove();
+    }
+
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    li.appendChild(removeBtn);
+
+    //li.textContent = text;//
+
+    document.getElementById("liste").appendChild(li);
+
+    input.value = ""; 
+    }
